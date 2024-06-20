@@ -54,8 +54,8 @@ export default function Textbox(props) {
 
   return (
     <>
-        <div className="container my-3">
-                <h1 style= {{color:  props.mode==='light'?'black':'white'}}>WRITE ANY TEXT </h1>
+        <div className="container my-3" >
+                <h1 style= {{color:  props.mode==='light'?'black':'white',marginTop:'100px'}}>Textutils-word counter,character counter,clear</h1>
               <textarea className="form-control" style = {{backgroundColor: props.mode==='dark'?'grey':'white', color:  props.mode==='light'?'black':'white'}}onChange={handleonchange} value={text} id="exampleFormControlTextarea1" rows="8"></textarea>
             <div> 
               <button type="button" onClick={handleupcase} className="btn btn-dark my-3"  >Convert to upperclass</button>
@@ -68,9 +68,9 @@ export default function Textbox(props) {
             </div>
             <div style= {{color:  props.mode==='light'?'black':'white'}}>
              <h2 >your text summary</h2>
-             <p> {text.split(" ").length} words  and   {text.length} characters</p>
+             <p> { text.split(/\s+/).filter(word => word.length !== 0).length} words and   {text.length} characters</p>
              <h2>Preview</h2>
-             <p>{text}</p>
+             <p>{text.length>0?text:"write something to preview text"}</p>
              </div>
             </div>
    </>
